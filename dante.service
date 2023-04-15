@@ -1,0 +1,13 @@
+[Unit]
+Description=Dante Socks server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/sockd -D $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+EnvironmentFile=-/etc/sysconfig/sockd
+
+[Install]
+WantedBy=multi-user.target
+
